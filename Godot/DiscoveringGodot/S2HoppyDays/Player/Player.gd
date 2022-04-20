@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 var motion = Vector2(0,0)
+var lives = 3
 
 const SPEED = 1000
 const GRAVITY = 300
@@ -43,4 +44,13 @@ func jump():
 		motion.y -= JUMP_SPEED
 
 func endGame():
-	get_tree().quit()
+	get_tree().change_scene("res://Levels/GameOver.tscn")
+	
+func hurt():
+	lives -= 1
+	position.y -= 1
+	yield(get_tree(), "idle_frame")
+	motion.y -= JUMP_SPEED
+	if lives < 0:
+		endGame()
+	

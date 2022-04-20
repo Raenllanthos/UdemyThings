@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://GFX/Background/bg_layer1.png" type="Texture" id=1]
 [ext_resource path="res://GFX/HUD/lifes.png" type="Texture" id=2]
 [ext_resource path="res://Fonts/candles_.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Levels/GameOver.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 128
@@ -10,12 +11,12 @@ font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 64
-outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
 [node name="EndGame" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -38,9 +39,10 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 125.0
-margin_top = 175.0
+margin_top = 172.0
 margin_right = 898.0
-margin_bottom = 425.0
+margin_bottom = 428.0
+alignment = 2
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 margin_right = 773.0
@@ -52,19 +54,21 @@ text = "Game Over!"
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
 margin_top = 168.0
 margin_right = 773.0
-margin_bottom = 250.0
+margin_bottom = 256.0
 alignment = 1
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
-margin_left = 169.0
-margin_right = 548.0
-margin_bottom = 82.0
+[node name="RestartButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 164.0
+margin_right = 609.0
+margin_bottom = 88.0
+focus_mode = 0
+custom_colors/font_color_focus = Color( 0.211765, 0.211765, 0.211765, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.211765, 0.211765, 0.211765, 1 )
+custom_colors/font_color_pressed = Color( 0.211765, 0.211765, 0.211765, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Try Again?"
+icon = ExtResource( 2 )
+flat = true
 
-[node name="TextureButton" type="TextureButton" parent="CenterContainer/VBoxContainer/HBoxContainer"]
-margin_left = 552.0
-margin_right = 604.0
-margin_bottom = 82.0
-texture_normal = ExtResource( 2 )
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
