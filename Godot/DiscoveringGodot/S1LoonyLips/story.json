@@ -1,0 +1,6 @@
+[
+    {"prompts" : ["a name", "a noun", "an adverb", "an adjective"],
+    "story" : "%s watched a movie called %s and it was the %s of all time. It was so %s."},
+    {"prompts" : ["a name", "a past tense verb", "a name", "an adjective", "a past tense verb"],
+    "story" : "%s %s %s so %s, they %s"}
+]
